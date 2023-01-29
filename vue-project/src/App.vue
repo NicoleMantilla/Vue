@@ -1,12 +1,37 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/product">Product</router-link> |
-    <router-link to="/profile">Profile</router-link>
-  </nav>
+    <NavBar
+    title="Ecommerce"
+    :color="'blue'"
+    :links="[
+      { label: 'Facebook', link: 'https://facebook.es' },
+      { label: 'Twitter', link: 'https://twitter.es', style: 'important-link' },
+    ]"
+    @buttonClicked="alertaClick($event)"
+  />
   <router-view/>
 </template>
 
+
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import LoginForm from './components/LoginForm.vue';
+import NavBar from "./components/NavBar.vue";
+import Carousel from "./components/Carousel.vue"
+
+export default defineComponent({
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Appcomponent',
+  components:{
+    // eslint-disable-next-line vue/no-unused-components
+    LoginForm,
+    // eslint-disable-next-line vue/no-unused-components
+    NavBar,
+    // eslint-disable-next-line vue/no-unused-components
+    Carousel,
+  },
+})
+</script>
 
 
 <style>
@@ -17,16 +42,13 @@
   text-align: center;
   color: #2c3e50;
 }
-
 nav {
   padding: 30px;
 }
-
 nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 nav a.router-link-exact-active {
   color: #42b983;
 }
